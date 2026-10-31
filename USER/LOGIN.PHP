@@ -106,6 +106,7 @@ if (isset($_POST['register'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Account</title>
+    <script src="USER.JS"></script>
 </head>
 
 <body>
@@ -145,6 +146,34 @@ if (isset($_POST['register'])) {
     <div id="login">
         <p>Do not have an account yet?</p>
         <a href="REGISTER.PHP">Register here...</a>
+    </div>
+</div>
+<!-- ==================== ABOUT BUTTON ==================== -->
+<button id="about" onclick="about()">?</button>
+
+<!-- ==================== ABOUT MODAL ==================== -->
+<div id="about_box" style="display: none;">
+    <div id="about_box1">
+        <h2>About Parcel Tracker</h2>
+        <hr>
+        <p>
+            <b>Parcel Tracker</b> is a user-friendly parcel tracking system
+            that gives you full visibility of your package's journey
+            from the seller to your doorstep.
+        </p>
+        <p>
+            <b>What you can do:</b><br>
+            • Track your parcel using a unique tracking code<br>
+            • View real-time status updates (8 delivery stages)<br>
+            • See the current location of your package<br>
+            • Access complete delivery history with timestamps
+        </p>
+        <hr>
+        <p><b>Developer:</b> Eduard R Mendoza</p>
+        <p><b>Course:</b> BS Computer Engineering</p>
+        <p><b>Date:</b> April 2026</p>
+        <hr>
+        <button id="exit" onclick="exit()">exit</button>
     </div>
 </div>
 </body>
@@ -319,6 +348,68 @@ a {
     color: rgba(225, 225, 225, 0.5);
     font-weight: bolder;
     font-size: 13px;
+}
+
+/* ==================== ABOUT BUTTON ==================== */
+#about {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    font-weight: bolder;
+    background: rgb(8, 75, 34);
+    font-size: 20px;
+    border: 1px solid rgba(253, 253, 253, 0.3);
+    color: white;
+    box-shadow: inset -4px -4px 3px rgba(0, 0, 0, 0.5) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================== ABOUT MODAL ==================== */
+#about_box {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    position: absolute;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+#about_box1 {
+    background: #00220f;
+    border-radius: 20px;
+    height: 440px;
+    width: 650px;
+    position: absolute;
+    z-index: 300;
+    padding: 30px;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 0;
+}
+
+#exit {
+    width: 80px;
+    border-radius: 15px;
+    font-weight: bold;
+    border: none;
+    margin-top: 5px;
+    font-size: 20px;
+    background: transparent;
+    box-shadow: 2px 2px 3px white, inset 2px 2px 3px white;
+    color: white;
+    padding: 0;
 }
 </style>
 

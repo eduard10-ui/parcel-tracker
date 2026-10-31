@@ -8,7 +8,35 @@
 <div id="nav_box">
     <button onclick="user()">USER VIEW</button>
     <button onclick="rider()">RIDER DASHBOARD</button>
+    <button onclick="showAdminModal()">ADMIN</button>
     <button onclick="logout()">LOGOUT</button>
+</div>
+<!-- ==================== ADMIN PASSWORD MODAL ==================== -->
+<div id="admin_log_box" style="display: none;">
+    <form action="VERIFY-ADMIN.PHP" method="POST" id="admin_log_box_inside">
+        <p>Enter Admin Password</p>
+        <input
+            type="password"
+            id="admin_password"
+            name="admin_password"
+            placeholder="Type admin password..."
+            autocomplete="off"
+            required
+        >
+        <input
+            id="admin_submit_btn"
+            type="submit"
+            name="admin_login"
+            value="VERIFY"
+        >
+        <button
+            id="admin_cancel_btn"
+            type="button"
+            onclick="closeAdminModal()"
+        >
+            CANCEL
+        </button>
+    </form>
 </div>
 <!-- ==================== NAVIGATION SCRIPT ==================== -->
 <script src="../NAV-BUTTON.JS"></script>
@@ -121,6 +149,27 @@ echo "</table>";
 <!-- ==================== RIDER SCRIPT ==================== -->
 <script src="RIDER.JS"></script>
 
+<!-- ==================== MODAL SCRIPT ==================== -->
+<script>
+
+// ==================== OPEN MODAL ====================
+function showAdminModal() {
+    document.getElementById('admin_log_box').style.display = 'flex';
+}
+// ==================== CLOSE MODAL ====================
+function closeAdminModal() {
+    document.getElementById('admin_log_box').style.display = 'none';
+}
+// ==================== CLOSE OUTSIDE CLICK ====================
+window.onclick = function(event) {
+    const modal = document.getElementById('admin_log_box');
+    if (event.target === modal) {
+        closeAdminModal();
+    }
+
+}
+
+</script>
 <style>
 
 
@@ -207,7 +256,7 @@ body {
 
 /* ==================== NAV HOVER ==================== */
 #nav_box:hover {
-    height: 170px;
+    height: 250px;
     width: 240px;
     background: rgba(12, 107, 28, 0.9);
     backdrop-filter: blur(10px);
@@ -385,5 +434,76 @@ h4 {
     color: white;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+/* ==================== ADMIN MODAL ==================== */
+#admin_log_box {
+    backdrop-filter: blur(5px);
+    z-index: 300;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* ==================== MODAL BOX ==================== */
+#admin_log_box_inside {
+    background: rgba(3, 37, 9, 0.7);
+    height: 250px;
+    width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(15, 15, 15, 0.5);
+}
+
+#admin_log_box_inside p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* ==================== PASSWORD INPUT ==================== */
+#admin_password {
+    padding: 12px;
+    border-radius: 25px;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: bold;
+}
+
+/* ==================== MODAL BUTTONS ==================== */
+#admin_submit_btn,
+#admin_cancel_btn {
+    padding: 10px;
+    border-radius: 25px;
+    width: 250px;
+    margin: 5px;
+    font-weight: bolder;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#admin_submit_btn {
+    background: #ffffff;
+    color: black;
+    border: none;
+}
+
+#admin_cancel_btn {
+    color: black;
+    border: none;
 }
 </style>

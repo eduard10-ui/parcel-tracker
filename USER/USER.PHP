@@ -13,6 +13,25 @@
 <h1 class='logo_name'>PARCEL TRACKER</h1>
 <p id="logo_subname">PARCEL TRACKING SYSTEM</p>
 
+<!-- ==================== ABOUT BUTTON ==================== -->
+<button id='about' onclick="about()">?</button>
+
+<!-- ==================== ABOUT MODAL ==================== -->
+<div id="about_box" style="display: none ;">
+    <div id="about_box_inside">
+        <h2>About Parcel Tracker</h2>
+        <hr>
+        <p><b>Parcel Tracker</b> lets you track your package from seller to doorstep.</p>
+        <p><b>Features:</b><br>• Track with unique code<br>• Real-time status updates<br>• Current location<br>• Full history</p>
+        <hr>
+        <p><b>Developer:</b> Eduard R Mendoza</p>
+        <p><b>Course:</b> BS Computer Engineering</p>
+        <p><b>Date:</b> April 2026</p>
+        <hr>
+        <button id="exit" onclick="exit()">exit</button>
+    </div>
+</div>
+
 <!-- ==================== FOOTER CREDITS ==================== -->
 <p id='develop'>DEVELOPED BY EDUARD R. MENDOZA | BS COMPUTER ENGINEERING | APRIL 2026</p>
 
@@ -123,6 +142,9 @@ if (isset($_POST['track_code'])) {
 <?php endif; ?>
 
 </div>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="USER.JS"></script>
 
 </body>
 
@@ -439,6 +461,63 @@ body::before {
     color: rgba(225, 225, 225, 0.5);
     font-weight: bolder;
     font-size: 13px;
+}
+
+/* ==================== ABOUT MODAL ==================== */
+#about {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    font-weight: bolder;
+    background: rgb(8, 75, 34);
+    font-size: 20px;
+    border: 1px solid rgba(253, 253, 253, 0.5);
+    color: white;
+}
+#about_box {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    position: absolute;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    box-shadow: inset -4px -4px 3px rgba(0, 0, 0, 0.5) !important;
+    justify-content: center;
+    color: white;
+    left: 10px;
+    top: 10px;
+}
+#about_box_inside{
+    background: #00220f;
+    box-shadow: inset -4px -4px 3px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 20px;
+    height: 440px;
+    width: 650px;
+    position: absolute;
+    z-index: 300;
+    padding: 30px;
+}
+h2{
+    margin-top: -5px;
+    font-size: 20px;
+}
+#exit {
+    padding: 5px;
+    width: 80px;
+    border-radius: 15px;
+    font-weight: bold;
+    border: none;
+    margin-top: 5px;
+    background: transparent;
+    box-shadow: 2px 2px 3px white, inset 2px 2px 3px white;
+    color: white;
+    font-size: 20px !important;
 }
 </style>
 </html>

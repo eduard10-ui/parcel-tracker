@@ -4,11 +4,14 @@
 <!-- ==================== EXTERNAL RESOURCES ==================== -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <!-- ==================== VISUAL ELEMENTS ==================== -->
 <img class='logo-style' src="../IMAGES/LOGO.PNG">
 <img class="foreground-style" src="../IMAGES/USER.PNG">
 <img class="bg-img" src="../IMAGES/BG.PNG">
+<img id="map-style" src="../IMAGES/MAP.PNG">
 
 <!-- ==================== HEADER ==================== -->
 <h1 class='logo_name'>PARCEL TRACKER</h1>
@@ -159,9 +162,29 @@ if (isset($_POST['track_code'])) {
     <i class="fa-solid fa-right-from-bracket"></i>
 </button>
 
+<!-- ==================== MAP ==================== -->
+<div id='map_box'>
+    <div id='map' style='display: none'></div>
+</div>
+
+<!-- ==================== HIDE MAP BUTTON ==================== -->
+<div id='hide_box'>
+    <button id='hide-holder'></button>
+    <button id='hide' onclick="hide_map()" style='display: none'>hide map</button>
+</div>
+
 <!-- ==================== SCRIPTS ==================== -->
 <script src="USER.JS"></script>
 <script src='../NAV-BUTTON.JS'></script>
+
+<script>
+// ==================== AUTO MAP LOAD ====================
+<?php if (!empty($history)): ?>
+document.addEventListener("DOMContentLoaded", function() {
+    show_map();
+});
+<?php endif; ?>
+</script>
 
 </body>
 
@@ -588,6 +611,113 @@ h2{
     margin: 5px;
     font-weight: bolder;
     font-size: 17px;
+}
+
+/* ==================== MAP PLACEHOLDER ==================== */
+#map-style {
+    height: 325px;
+    width: 325px;
+    top: 175px;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 120;
+    right: 63px;
+    opacity: 0.7;
+    animation: 3s fade ease-in-out infinite;
+    background: rgba(225,225,225, 0.05);
+}
+
+/* ==================== MAP CONTAINER ==================== */
+#map_box {
+    height: 350px;
+    width: 350px;
+    position: absolute;
+    right: 50px;
+    top: 25%;
+    border-radius: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(1, 13, 0, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(195, 248, 166, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 15, 5, 0.8),
+                inset -10px -10px 30px rgba(0, 15, 5, 0.8);
+}
+#map {
+    height: 330px;
+    width: 330px;
+    background: white;
+    position: absolute;
+    border-radius: 18px;
+    z-index: 100;
+}
+@keyframes fade {
+    0%, 100% {
+        opacity: 0.1;
+        background: rgba(225,225,225, 0.1);
+        transform: translateY(0) scale(0.98);
+    }
+    50% {
+        opacity: 0.6;
+        background: rgba(225,225,225, 0.3);
+        transform: scale(0.96);
+    }
+}
+
+/* ==================== HIDE MAP BUTTONS ==================== */
+#hide_box {
+    position: absolute;
+    right: 50px;
+    top: 85px;
+    border-radius: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 350px;
+    background: rgba(1, 13, 0, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(195, 248, 166, 0.2);
+    border-radius: 15px;
+}
+#hide-holder {
+    background: linear-gradient(156deg, #c7c7c7, #585554);
+    opacity: 0.7;
+    position: absolute;
+    border-radius: 15px;
+    width: 325px;
+    padding: 10px;
+    z-index: 103;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    animation: 3s fade ease-in-out infinite;
+}
+#hide {
+    background: linear-gradient(156deg, #ffbb29, #d11f00);
+    position: absolute;
+    border-radius: 15px;
+    width: 325px;
+    padding: 10px;
+    z-index: 103;
+    display: none;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
 </html>

@@ -70,10 +70,19 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . htmlspecialchars($row['address']) . "</td>";
         echo "<td>" . htmlspecialchars($row['price']) . "</td>";
         // ==================== LOCATION COLUMN ====================
+        // ==================== LOCATION COLUMN ====================
         echo "<td>";
         echo "<div style='display:flex; justify-content:space-between; align-items:center; gap:5px;'>";
         echo "<span>" . htmlspecialchars($row['location']) . "</span>";
+        echo "<button id='update' onclick='updateLocation(\"$row_id\", event)'>Update</button>";
         echo "</div>";
+        // ==================== HIDDEN LOCATION FORM ====================
+        echo "<form method='POST' action='update-status.php' id='loc_form_$row_id' style='display:none;'>";
+        echo "<input type='hidden' name='parcel_id' value='$row_id'>";
+        echo "<input type='hidden' name='track_code' value='" . htmlspecialchars($row['tracking_code']) . "'>";
+        echo "<input type='hidden' name='new_status' value='" . htmlspecialchars($row['status']) . "'>";
+        echo "<input type='hidden' name='new_location' id='input_$row_id'>";
+        echo "</form>"; 
         echo "</td>";
         // ==================== STATUS COLUMN ====================
         echo "<td>";
@@ -109,7 +118,11 @@ if (mysqli_num_rows($result) > 0) {
 echo "</table>";
 ?>
 
+<!-- ==================== RIDER SCRIPT ==================== -->
+<script src="RIDER.JS"></script>
+
 <style>
+
 
 /* ==================== GLOBAL STYLE ==================== */
 * {
@@ -363,14 +376,14 @@ h4 {
     margin: 0;
 }
 
-/* ==================== STATUS SELECT ==================== */
-#new_status {
-    padding: 8px;
+/* ==================== UPDATE BUTTON ==================== */
+#update {
+    padding: 5px 7px;
     border-radius: 5px;
-    background: #04490b;
+    margin: 0px 5px;
+    background: linear-gradient(156deg, #dfd0b1, #d11f00);
     color: white;
-    border: 1px solid #c3f8a6;
-    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
-
 </style>

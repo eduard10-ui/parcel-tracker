@@ -29,13 +29,13 @@
 </div>
 
 <!-- ==================== JAVASCRIPT FILE ==================== -->
-<script src="../NAV-BUTTON.JS"></script>
+<script src="../nav-button.js"></script>
 
 <!-- ==================== PHP SECTION ==================== -->
 <?php
 
 // ==================== DATABASE CONNECTION ====================
-include '../DB.PHP';
+include '../db.php';
 
 // ==================== SEARCH FUNCTION ====================
 if (isset($_POST['search_btn'])) {
@@ -106,7 +106,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<td>" . $row['status'] . "</td>";
 
     echo "<td>";
-    echo "<a href='DELETE.PHP?id=" . $row['id'] . "' onclick='return confirm(\"Delete this parcel?\")'>DELETE</a>";
+    echo "<a href='delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Delete this parcel?\")'>DELETE</a>";
     echo "</td>";
 
     echo "</tr>";

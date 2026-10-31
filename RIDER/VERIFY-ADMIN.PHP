@@ -1,7 +1,7 @@
 <?php
 
 // ==================== DATABASE CONNECTION ====================
-include '../DB.PHP';
+include '../db.php';
 
 // ==================== START SESSION ====================
 session_start();
@@ -27,7 +27,7 @@ if (isset($_POST['admin_login'])) {
         $_SESSION['admin'] = true;
 
         // ==================== REDIRECT TO ADMIN DASHBOARD ====================
-        header("Location: ../ADMIN/DASHBOARD.PHP");
+        header("Location: ../ADMIN/dashboard.php");
         exit();
 
     } else {
@@ -35,7 +35,7 @@ if (isset($_POST['admin_login'])) {
         // ==================== WRONG PASSWORD ====================
         echo "<script>
                 alert('Wrong admin password!');
-                window.location.href='RIDER.PHP';
+                window.location.href='rider.php';
               </script>";
         exit();
 
@@ -44,7 +44,7 @@ if (isset($_POST['admin_login'])) {
 } else {
 
     // ==================== INVALID ACCESS ====================
-    header("Location: RIDER.PHP");
+    header("Location: rider.php");
     exit();
 
 }

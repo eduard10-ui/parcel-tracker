@@ -1,6 +1,6 @@
 <?php
 // ==================== DATABASE CONNECTION ====================
-include "../DB.PHP";
+include "../db.php";
 
 // ==================== CHECK IF BUTTON IS CLICKED ====================
 if (isset($_POST['register_btn'])) {
@@ -24,7 +24,7 @@ if (isset($_POST['register_btn'])) {
         if (empty($_POST[$field])) {
             echo "<script>
                     alert('Please fill in all fields!');
-                    window.location.href='REGISTER-PARCEL.PHP';
+                    window.location.href='register-parcel.php';
                   </script>";
             exit();
         }
@@ -49,7 +49,7 @@ if (isset($_POST['register_btn'])) {
     ) {
         echo "<script>
                 alert('Price, weight, length, and width must be numbers!');
-                window.location.href='REGISTER-PARCEL.PHP';
+                window.location.href='register-parcel.php';
               </script>";
         exit();
     }
@@ -107,7 +107,7 @@ if (isset($_POST['register_btn'])) {
         // ==================== SUCCESS MESSAGE ====================
         echo "<script>
                 alert('Parcel registered successfully! Tracking Code: $tracking_code');
-                window.location.href='REGISTER-PARCEL.PHP';
+                window.location.href='register-parcel.php';
               </script>";
         exit();
 
@@ -116,7 +116,7 @@ if (isset($_POST['register_btn'])) {
         // ==================== ERROR MESSAGE ====================
         echo "<script>
                 alert('Registration failed! Please try again.');
-                window.location.href='REGISTER-PARCEL.PHP';
+                window.location.href='register-parcel.php';
               </script>";
         exit();
     }

@@ -1,6 +1,6 @@
 <?php
 // ==================== DATABASE CONNECTION ====================
-include '../DB.PHP';
+include '../db.php';
 // ==================== SESSION START ====================
 session_start();
 // ==================== LOGIN HANDLER ====================

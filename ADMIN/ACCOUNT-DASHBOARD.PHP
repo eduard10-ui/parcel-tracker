@@ -21,12 +21,12 @@
 </div>
 
 <!-- ==================== EXTERNAL JAVASCRIPT ==================== -->
-<script src='../NAV-BUTTON.JS'></script>
+<script src='../nav-button.js'></script>
 
 <!-- ========== PHP: DATABASE CONNECTION & LOGIC ============= -->
 <?php
 // ==================== INCLUDE DATABASE CONNECTION ====================
-include '../DB.PHP';
+include '../db.php';
 
 // ==================== REGISTRATION LOGIC ====================
 if (isset($_POST['register'])) {
@@ -57,7 +57,7 @@ if (isset($_POST['toggle_status'])) {
     mysqli_query($conn, "UPDATE accounts SET status = '$new_status' WHERE id = '$id'");
 
     // Refresh the page to show the change
-    header("Location: ACCOUNT-DASHBOARD.PHP");
+    header("Location: account-dashboard.php");
     exit();
 }
 

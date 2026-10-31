@@ -1,14 +1,14 @@
 <?php
 
 // ==================== DATABASE CONNECTION ====================
-include '../DB.PHP';
+include '../db.php';
 
 // ==================== CHECK REQUEST METHOD ====================
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // ==================== CHECK REQUIRED DATA ====================
     if (!isset($_POST['parcel_id']) || !isset($_POST['track_code'])) {
-        echo "<script> alert('Invalid parcel data!'); window.location.href='RIDER.PHP';</script>";
+        echo "<script> alert('Invalid parcel data!'); window.location.href='rider.php';</script>";
         exit();
     }
     // ==================== GET FORM DATA ====================
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // ==================== CHECK EMPTY LOCATION ====================
     if (empty($new_location)) {
-        echo "<script> alert('Location cannot be empty! Please update location first.'); window.location.href='RIDER.PHP'; </script>";
+        echo "<script> alert('Location cannot be empty! Please update location first.'); window.location.href='rider.php'; </script>";
         exit();
     }
 
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         echo "<script>
                 alert('Failed to update parcel! Please try again.');
-                window.location.href='RIDER.PHP';
+                window.location.href='rider.php';
               </script>";
         exit();
 
@@ -66,20 +66,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         echo "<script>
                 alert('Parcel updated but history not saved!');
-                window.location.href='RIDER.PHP';
+                window.location.href='rider.php';
               </script>";
         exit();
 
     }
 
     // ==================== REDIRECT SUCCESS ====================
-    header("Location: RIDER.PHP?msg=success");
+    header("Location: rider.php?msg=success");
     exit();
 
 } else {
 
     // ==================== INVALID ACCESS ====================
-    header("Location: RIDER.PHP");
+    header("Location: rider.php");
     exit();
 
 }

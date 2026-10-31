@@ -1,18 +1,18 @@
 <?php
 // ==================== DATABASE CONNECTION ====================
-include "../DB.PHP";
+include "../db.php";
 // ==================== START SESSION ====================
 session_start();
 // ==================== LOGIN PROCESS ====================
 if (isset($_POST['register'])) {
     // ==================== CHECK USERNAME ====================
     if (empty($_POST['username'])) {
-        echo "<script>alert('Username is required!'); window.location.href='LOGIN.PHP';</script>";
+        echo "<script>alert('Username is required!'); window.location.href='login.php';</script>";
         exit();
     }
     // ==================== CHECK PASSWORD ====================
     if (empty($_POST['password'])) {
-        echo "<script>alert('Password is required!'); window.location.href='LOGIN.PHP';</script>";
+        echo "<script>alert('Password is required!'); window.location.href='login.php';</script>";
         exit();
     }
     // ==================== GET FORM DATA ====================
@@ -21,41 +21,41 @@ if (isset($_POST['register'])) {
     // ==================== ADMIN LOGIN CHECK ====================
     $admin_result = mysqli_query($conn, "SELECT username, password FROM admin WHERE id=0");
     if (!$admin_result) {
-        echo "<script>alert('Database error! Please try again.'); window.location.href='LOGIN.PHP';</script>";
+        echo "<script>alert('Database error! Please try again.'); window.location.href='login.php';</script>";
         exit();
     }
     $admin_row = mysqli_fetch_assoc($admin_result);
     if ($username == $admin_row['username'] && $password == $admin_row['password']) {
         $_SESSION['user'] = $username;
         $_SESSION['is_admin'] = true;
-        header("Location: ../ADMIN/DASHBOARD.PHP");
+        header("Location: ../ADMIN/dashboard.php");
         exit();
     } 
     // ==================== RIDER LOGIN CHECK ====================
     $rider_result = mysqli_query($conn, "SELECT username, password FROM admin WHERE id=1");
     if (!$rider_result) {
-        echo "<script>alert('Database error! Please try again.'); window.location.href='LOGIN.PHP';</script>";
+        echo "<script>alert('Database error! Please try again.'); window.location.href='login.php';</script>";
         exit();
     }
     $rider_row = mysqli_fetch_assoc($rider_result);
     if ($username == $rider_row['username'] && $password == $rider_row['password']) {
         $_SESSION['user'] = $username;
         $_SESSION['is_rider'] = true;
-        header("Location: ../RIDER/RIDER.PHP");
+        header("Location: ../RIDER/rider.php");
         exit();
     }
     // ==================== USER ACCOUNT CHECK ====================
     $sql = "SELECT * FROM accounts WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
     if (!$result) {
-        echo "<script>alert('Database error! Please try again.'); window.location.href='LOGIN.PHP';</script>";
+        echo "<script>alert('Database error! Please try again.'); window.location.href='login.php';</script>";
         exit();
     }
     $row = mysqli_fetch_assoc($result);
     if ($row) {
         // ==================== ACCOUNT DISABLED CHECK ====================
         if ($row['status'] == 'disabled') {
-            echo "<script>alert('Account locked! Contact Admin.'); window.location.href='LOGIN.PHP';</script>";
+            echo "<script>alert('Account locked! Contact Admin.'); window.location.href='login.php';</script>";
             exit();
         }
         // ==================== PASSWORD VERIFY ====================
@@ -63,7 +63,7 @@ if (isset($_POST['register'])) {
             mysqli_query($conn, "UPDATE accounts SET failed_attempts = 0 WHERE username = '$username'");
             $_SESSION['user'] = $username;
             $_SESSION['is_user'] = true;
-            header("Location: USER.PHP");
+            header("Location: user.php");
             exit();
         } else {
             // ==================== FAILED ATTEMPTS ====================
@@ -75,10 +75,10 @@ if (isset($_POST['register'])) {
                      WHERE username = '$username'"
                 );
                 if (!$update) {
-                    echo "<script>alert('Database error!'); window.location.href='LOGIN.PHP';</script>";
+                    echo "<script>alert('Database error!'); window.location.href='login.php';</script>";
                     exit();
                 }
-                echo "<script>alert('3 fails! Account Disabled.'); window.location.href='LOGIN.PHP';</script>";
+                echo "<script>alert('3 fails! Account Disabled.'); window.location.href='login.php';</script>";
             } else {
                 $update = mysqli_query(
                     $conn,
@@ -87,16 +87,16 @@ if (isset($_POST['register'])) {
                      WHERE username = '$username'"
                 );
                 if (!$update) {
-                    echo "<script>alert('Database error!'); window.location.href='LOGIN.PHP';</script>";
+                    echo "<script>alert('Database error!'); window.location.href='login.php';</script>";
                     exit();
                 }
                 $left = 3 - $attempts;
-                echo "<script>alert('Wrong password! $left attempts left.'); window.location.href='LOGIN.PHP';</script>";
+                echo "<script>alert('Wrong password! $left attempts left.'); window.location.href='login.php';</script>";
             }
         }
     } else {
         // ==================== USER NOT FOUND ====================
-        echo "<script>alert('User does not exist.'); window.location.href='LOGIN.PHP';</script>";
+        echo "<script>alert('User does not exist.'); window.location.href='login.php';</script>";
     }
 }
 ?>
@@ -106,7 +106,7 @@ if (isset($_POST['register'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Account</title>
-    <script src="USER.JS"></script>
+    <script src="user.js"></script>
 </head>
 
 <body>
@@ -121,7 +121,7 @@ if (isset($_POST['register'])) {
 </div>
 
 <div id="main">
-    <form method="POST" id="form" action="LOGIN.PHP">
+    <form method="POST" id="form" action="login.php">
         <fieldset>
             <legend>USERNAME</legend>
             <input
@@ -145,7 +145,7 @@ if (isset($_POST['register'])) {
     </form>
     <div id="login">
         <p>Do not have an account yet?</p>
-        <a href="REGISTER.PHP">Register here...</a>
+        <a href="register.php">Register here...</a>
     </div>
 </div>
 <!-- ==================== ABOUT BUTTON ==================== -->

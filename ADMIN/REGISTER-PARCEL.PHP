@@ -40,7 +40,7 @@
     <div id="dash">
 
         <!-- ==================== REGISTRATION FORM ==================== -->
-        <form action="REGISTER-SQL.PHP" method="post" id="dash_box">
+        <form action="register-sql.php" method="post" id="dash_box">
 
             <h2>REGISTER PARCEL</h2>
 
@@ -137,7 +137,7 @@
 </main>
 
 <!-- ==================== JAVASCRIPT FILE ==================== -->
-<script src="../NAV-BUTTON.JS"></script>
+<script src="../nav-button.js"></script>
 
 </body>
 
@@ -411,7 +411,7 @@ label {
 <?php
 
 // ==================== DATABASE CONNECTION ====================
-include "../DB.PHP";
+include "../db.php";
 
 // ==================== REGISTER PARCEL ====================
 if (isset($_POST['register_btn'])) {

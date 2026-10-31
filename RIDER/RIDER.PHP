@@ -13,7 +13,7 @@
 </div>
 <!-- ==================== ADMIN PASSWORD MODAL ==================== -->
 <div id="admin_log_box" style="display: none;">
-    <form action="VERIFY-ADMIN.PHP" method="POST" id="admin_log_box_inside">
+    <form action="verify-admin.php" method="POST" id="admin_log_box_inside">
         <p>Enter Admin Password</p>
         <input
             type="password"
@@ -39,11 +39,11 @@
     </form>
 </div>
 <!-- ==================== NAVIGATION SCRIPT ==================== -->
-<script src="../NAV-BUTTON.JS"></script>
+<script src="../nav-button.js"></script>
     
 <?php
 // ==================== DATABASE CONNECTION ====================
-include '../DB.PHP';
+include '../db.php';
 // ==================== START SESSION ====================
 session_start();
 // ==================== SEARCH FUNCTION ====================
@@ -147,7 +147,7 @@ echo "</table>";
 ?>
 
 <!-- ==================== RIDER SCRIPT ==================== -->
-<script src="RIDER.JS"></script>
+<script src="rider.js"></script>
 
 <!-- ==================== MODAL SCRIPT ==================== -->
 <script>

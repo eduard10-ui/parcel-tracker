@@ -3,6 +3,7 @@
 
 <!-- ==================== EXTERNAL RESOURCES ==================== -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel='stylesheet' href='.CSS'>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -41,7 +42,7 @@
 
 <?php
 // ==================== DATABASE CONNECTION (RE-INIT SAFE) ====================
-include '../DB.PHP';
+include '../db.php';
 
 // ==================== SEARCH LOGIC ====================
 $history = [];
@@ -149,7 +150,7 @@ if (isset($_POST['track_code'])) {
 
 <!-- ==================== ADMIN LOGIN MODAL ==================== -->
 <div id="log_box" style="display: none ;">
-    <form action="VERIFY-PASSWORD.PHP" method="POST" id='log_box_inside'>
+    <form action="verify-password.php" method="POST" id='log_box_inside'>
         <p>For admin and rider only!</p>
         <input type="text" id='password' name='password' placeholder='type admin password' autocomplete='off'>
         <input id='submit_btn' type="submit" name='login'>
@@ -174,8 +175,8 @@ if (isset($_POST['track_code'])) {
 </div>
 
 <!-- ==================== SCRIPTS ==================== -->
-<script src="USER.JS"></script>
-<script src='../NAV-BUTTON.JS'></script>
+<script src="user.js"></script>
+<script src='../nav-button.js'></script>
 
 <script>
 // ==================== AUTO MAP LOAD ====================

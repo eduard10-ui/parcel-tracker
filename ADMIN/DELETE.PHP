@@ -1,7 +1,7 @@
 <?php
 
 // ==================== DATABASE CONNECTION ====================
-include "../DB.PHP";
+include "../db.php";
 
 // ==================== GET ID FROM URL ====================
 $id = $_GET['id'];
@@ -15,7 +15,7 @@ if (mysqli_query($conn, $sql)) {
     // ==================== SUCCESS MESSAGE ====================
     echo "<script>
             alert('Parcel deleted successfully!');
-            window.location.href='DASHBOARD.PHP';
+            window.location.href='dashboard.php';
           </script>";
 
 } else {
@@ -23,7 +23,7 @@ if (mysqli_query($conn, $sql)) {
     // ==================== ERROR MESSAGE ====================
     echo "<script>
             alert('Delete failed! Please try again.');
-            window.location.href='DASHBOARD.PHP';
+            window.location.href='dashboard.php';
           </script>";
 
 }

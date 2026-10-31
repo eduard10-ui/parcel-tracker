@@ -1,4 +1,4 @@
-// ==================== FILE: USER.JS ====================
+// ==================== FILE: user.js ====================
 // PURPOSE: UI helper functions for user-facing pages
 
 // ==================== UI CONTROLS ====================

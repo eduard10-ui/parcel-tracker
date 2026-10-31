@@ -1,8 +1,8 @@
 <?php
-// ==================== FILE: REGISTER.PHP ====================
+// ==================== FILE: register.php ====================
 // PURPOSE: Handles user registration and account creation
 
-include "../DB.PHP";
+include "../db.php";
 
 // ==================== REGISTER REQUEST HANDLER ====================
 if(isset($_POST['register'])){
@@ -10,12 +10,12 @@ if(isset($_POST['register'])){
     // ==================== INPUT VALIDATION ====================
 
     if(empty($_POST['username'])) {
-        echo "<script>alert('Username is required!'); window.location.href='REGISTER.PHP';</script>";
+        echo "<script>alert('Username is required!'); window.location.href='register.php';</script>";
         exit();
     }
     
     if(empty($_POST['password'])) {
-        echo "<script>alert('Password is required!'); window.location.href='REGISTER.PHP';</script>";
+        echo "<script>alert('Password is required!'); window.location.href='register.php';</script>";
         exit();
     }
     
@@ -29,21 +29,21 @@ if(isset($_POST['register'])){
     $check = mysqli_query($conn, "SELECT * FROM accounts WHERE username = '$username'");
     
     if(!$check) {
-        echo "<script>alert('Database error! Please try again.'); window.location.href='REGISTER.PHP';</script>";
+        echo "<script>alert('Database error! Please try again.'); window.location.href='register.php';</script>";
         exit();
     }
     
     if(mysqli_num_rows($check) > 0){
-        echo "<script>alert('Username already exists!'); window.location.href='REGISTER.PHP';</script>";
+        echo "<script>alert('Username already exists!'); window.location.href='register.php';</script>";
     } else {
 
         $sql = "INSERT INTO accounts (username, password, status, failed_attempts) 
                 VALUES ('$username', '$hashed_password', 'active', 0)";
         
         if(mysqli_query($conn, $sql)){
-            echo "<script>alert('Registration Successful!'); window.location.href='LOGIN.PHP';</script>";
+            echo "<script>alert('Registration Successful!'); window.location.href='login.php';</script>";
         } else {
-            echo "<script>alert('Registration failed! Please try again.'); window.location.href='REGISTER.PHP';</script>";
+            echo "<script>alert('Registration failed! Please try again.'); window.location.href='register.php';</script>";
         }
     }
 }
@@ -75,7 +75,7 @@ if(isset($_POST['register'])){
     </div>
     
     <div id="main">
-        <form method="POST" id="form" action="REGISTER.PHP">
+        <form method="POST" id="form" action="register.php">
             <fieldset>
                 <legend>USERNAME</legend>
                 <input type="text" name="username" placeholder="Enter your username here.." autocomplete="off" required>
@@ -92,7 +92,7 @@ if(isset($_POST['register'])){
         
         <div id="login">
             <p>Have an account already?</p>
-            <a href="LOGIN.PHP">Login here...</a> 
+            <a href="login.php">Login here...</a> 
         </div>
 
     </div>
@@ -137,7 +137,7 @@ if(isset($_POST['register'])){
 
 </body>
 <!-- ==================== JAVASCRIPT SECTION ==================== -->
-<script src="USER.JS"></script>
+<script src="user.js"></script>
 
 <style>
 

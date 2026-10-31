@@ -15,6 +15,9 @@
 <p id="logo_name">PARCEL TRACKER</p>
 <p id="logo_subname">PARCEL TRACKING SYSTEM</p>
 
+<img class="logo-style" src="../IMAGES/LOGO.PNG">
+<img class="dash-style" src="../IMAGES/TRACKER.PNG">
+
 <!-- ==================== NAVIGATION MENU ==================== -->
 <div id="nav">
     <button onclick="user()">USER VIEW</button>
@@ -323,6 +326,30 @@ h4 {
     opacity: 0;
     transform: rotate(90deg);
 }
+
+/* ==================== DASH IMAGE ==================== */
+.dash-style {
+    position: absolute;
+    top: 25px;
+    left: 200px;
+    height: 200px;
+    width: 120px;
+    z-index: 1;
+    width: 300px;
+}
+
+/* ==================== LOGO STYLE ==================== */
+.logo-style {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 10px;
+    top: 6px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
 
 #logo_name {
     position: absolute;

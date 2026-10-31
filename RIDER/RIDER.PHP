@@ -170,6 +170,11 @@ window.onclick = function(event) {
 }
 
 </script>
+
+<!-- ==================== HEADER IMAGES ==================== -->
+<img class="dash-style" src="../IMAGES/TRACKER.PNG">
+<img class="logo-style" src="../IMAGES/LOGO.PNG">
+
 <style>
 
 
@@ -186,6 +191,30 @@ body {
     flex-direction: column;
     height: 100vh;
 }
+
+/* ==================== DASH IMAGE ==================== */
+.dash-style {
+    position: absolute;
+    top: 35px;
+    left: 200px;
+    height: 200px;
+    width: 120px;
+    z-index: 1;
+    width: 300px;
+}
+
+/* ==================== LOGO IMAGE ==================== */
+.logo-style {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 10px;
+    top: 6px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
 
 /* ==================== LOGO TEXT ==================== */
 #logo_name {

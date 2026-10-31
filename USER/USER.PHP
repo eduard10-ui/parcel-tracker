@@ -4,6 +4,11 @@
 <!-- ==================== EXTERNAL RESOURCES ==================== -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+<!-- ==================== VISUAL ELEMENTS ==================== -->
+<img class='logo-style' src="../IMAGES/LOGO.PNG">
+<img class="foreground-style" src="../IMAGES/USER.PNG">
+<img class="bg-img" src="../IMAGES/BG.PNG">
+
 <!-- ==================== HEADER ==================== -->
 <h1 class='logo_name'>PARCEL TRACKER</h1>
 <p id="logo_subname">PARCEL TRACKING SYSTEM</p>
@@ -152,6 +157,41 @@ body::before {
     z-index: -1;
     pointer-events: none;
 }
+
+/* ==================== ANIMATIONS ==================== */
+.bg-img {
+    position: absolute;
+    bottom: -120px;
+    left: 50%;
+    width: 100vw;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.3;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.2)) contrast(1.4) saturate(1.5) brightness(1.8);
+}
+.foreground-style {
+    position: absolute;
+    width: 550px;
+    height: 480px;
+    left: -20px;
+    top: 51%;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+.logo-style {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 20px;
+    top: 10px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
 /* ===========================================================================================================
     LOGO STYLES
    =========================================================================================================== */   

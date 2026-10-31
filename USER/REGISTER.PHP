@@ -57,9 +57,17 @@ if(isset($_POST['register'])){
     <title>Register Account</title>
 </head>
 
+<img class='logo-style' src="../IMAGES/LOGO.PNG">
+
 <body>
+
+    <!-- ==================== HEADER SECTION ==================== -->
     <p id='logo_name'>PARCEL TRACKER</p>
     <p id="logo_subname">PARCEL TRACKING SYSTEM</p>
+
+    <!-- ==================== DECORATIVE IMAGE ==================== -->
+    <img class='registry-style' src="../IMAGES/REGISTRY.PNG">
+    
     <p id='developer'>DEVELOPED BY EDUARD R. MENDOZA</p>
 
     <div id="title">
@@ -105,6 +113,17 @@ body {
     height: 100vh;
     background: #03220a;
     overflow: hidden;
+}
+
+/* ==================== LOGO ==================== */
+.logo-style {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: 445px;
+    top: 36px;
+    z-index: 10;
+    pointer-events: none;
 }
 
 /* ==================== TITLE TEXT ==================== */
@@ -241,6 +260,14 @@ a {
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+/* ==================== EXTRA IMAGES ==================== */
+.registry-style {
+    position: absolute;
+    height: 500px;
+    left: -20px;
+    bottom: 0px;
 }
 
 /* ==================== FOOTER TEXT ==================== */

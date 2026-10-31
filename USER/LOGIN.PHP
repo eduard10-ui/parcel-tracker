@@ -110,7 +110,8 @@ if (isset($_POST['register'])) {
 
 <body>
 <p id="developer">DEVELOPED BY EDUARD R. MENDOZA</p>
-
+<img class="logo-style" src="../IMAGES/LOGO.PNG">
+<img class="registry-style" src="../IMAGES/REGISTRY.PNG">
 <p id="logo_name">PARCEL TRACKER</p>
 <p id="logo_subname">PARCEL TRACKING SYSTEM</p>
 
@@ -162,6 +163,17 @@ body {
     background: #03220a;
     overflow: hidden;
 }
+/* ==================== LOGO ==================== */
+.logo-style {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: 445px;
+    top: 36px;
+    z-index: 10;
+    pointer-events: none;
+}
+
 
 #logo_name {
     position: absolute;
@@ -291,6 +303,14 @@ a {
     justify-content: center;
     gap: 10px;
 }
+/* ==================== EXTRA IMAGES ==================== */
+.registry-style {
+    position: absolute;
+    height: 500px;
+    left: -20px;
+    bottom: 0px;
+}
+
 
 #developer {
     position: absolute;

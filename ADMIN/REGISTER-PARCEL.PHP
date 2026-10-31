@@ -27,6 +27,9 @@
 </div>
 
 <!-- ==================== LOGO AND HEADER ==================== -->
+<img class="logo-style" src="../IMAGES/LOGO.PNG">
+<img class="parcel-style" src="../IMAGES/TRACKER.PNG">
+
 <h1 class="logo_name">PARCEL TRACKER</h1>
 <p id="logo_subname">PARCEL TRACKING SYSTEM</p>
 
@@ -348,6 +351,28 @@ label {
     font-weight: bolder;
     font-size: 1.2rem;
     text-shadow: 2px 2px 5px black;
+}
+
+
+/* ==================== LOGO IMAGE ==================== */
+.logo-style {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 10px;
+    top: 0px !important;
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* ==================== PARCEL IMAGE ==================== */
+.parcel-style {
+    position: absolute;
+    left: -45px;
+    bottom: 0;
+    height: 470px;
+    width: 450px;
 }
 
 /* ==================== LOGO TEXT ==================== */

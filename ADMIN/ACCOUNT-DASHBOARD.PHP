@@ -102,6 +102,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 echo "</table>";
 ?>
 
+<!-- ==================== ANIMATION ASSETS ==================== -->
+<img class='dash-style' src="../IMAGES/TRACKER.PNG">
+<img class='logo-style' src="../IMAGES/LOGO.PNG">
+
 </body>
 
 <!-- ==================== STYLES ==================== -->
@@ -254,6 +258,28 @@ input:focus {
     color: white;
     margin-right: 20px !important;
     cursor: pointer;
+}
+
+/* ==================== ANIMATION / IMAGE STYLES ==================== */
+.dash-style {
+    position: absolute;
+    top: 37px;
+    left: 200px;
+    height: 200px;
+    width: 100px;
+    z-index: 1;
+    width: 300px;
+}
+
+.logo-style {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 10px;
+    top: 6px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.8;
 }
 
 /* ==================== LOGO TEXT STYLES ==================== */

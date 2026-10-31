@@ -154,6 +154,7 @@ echo "</table>";
 
 // ==================== OPEN MODAL ====================
 function showAdminModal() {
+    document.getElementById('admin_password').value = '';
     document.getElementById('admin_log_box').style.display = 'flex';
 }
 // ==================== CLOSE MODAL ====================

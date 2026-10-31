@@ -10,8 +10,8 @@ function about() {
 function exit() {
     document.getElementById('about_box').style.display = 'none';
 }
-
 function admin() {
+    document.getElementById('password').value = '';
     document.getElementById('log_box').style.display = 'flex';
 }
 

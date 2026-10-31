@@ -2,6 +2,7 @@
 <title>User View</title>
 
 <!-- ==================== EXTERNAL RESOURCES ==================== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 <!-- ==================== VISUAL ELEMENTS ==================== -->
@@ -143,8 +144,24 @@ if (isset($_POST['track_code'])) {
 
 </div>
 
+<!-- ==================== ADMIN LOGIN MODAL ==================== -->
+<div id="log_box" style="display: none ;">
+    <form action="VERIFY-PASSWORD.PHP" method="POST" id='log_box_inside'>
+        <p>For admin and rider only!</p>
+        <input type="text" id='password' name='password' placeholder='type admin password' autocomplete='off'>
+        <input id='submit_btn' type="submit" name='login'>
+        <button id="cancel_btn" type="button" onclick="cancel()">cancel</button>
+    </form>
+</div>
+
+<!-- ==================== ADMIN BUTTON ==================== -->
+<button id='admin_btn' onclick="admin()">
+    <i class="fa-solid fa-right-from-bracket"></i>
+</button>
+
 <!-- ==================== SCRIPTS ==================== -->
 <script src="USER.JS"></script>
+<script src='../NAV-BUTTON.JS'></script>
 
 </body>
 
@@ -518,6 +535,59 @@ h2{
     box-shadow: 2px 2px 3px white, inset 2px 2px 3px white;
     color: white;
     font-size: 20px !important;
+}
+
+/* ==================== ADMIN BUTTON ==================== */
+#admin_btn{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    background: rgba(225, 225, 225, 0.2);
+    color: rgba(225, 225, 225, 0.7);
+}
+#log_box{
+    backdrop-filter: blur(5px);
+    z-index: 300;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+}
+#log_box_inside{
+    background: rgba(3, 37, 9, 0.8);
+    height: 250px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+}
+#password{
+    padding: 10px;
+    border-radius: 20px;
+    margin: 5px;
+    width: 230px;
+    text-align: center;
+}
+#submit_btn, #cancel_btn{
+    padding: 7px;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 230px;
+    margin: 5px;
+    font-weight: bolder;
+    font-size: 17px;
 }
 </style>
 </html>

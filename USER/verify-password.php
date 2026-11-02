@@ -18,13 +18,13 @@ if (isset($_POST['login'])) {
     // ==================== ADMIN LOGIN VALIDATION ====================
     if ($password == $admin_row['password']) {
         $_SESSION['admin'] = true;
-        header("Location: ../admin/dashboard.php");
+        header("Location: ../ADMIN/dashboard.php");
         exit();
     }
     // ==================== RIDER LOGIN VALIDATION ====================
     elseif ($password == $rider_row['password']) {
         $_SESSION['rider'] = true;
-        header("Location: ../rider/rider.php");
+        header("Location: ../RIDER/rider.php");
         exit();
     }
     // ==================== INVALID LOGIN ====================

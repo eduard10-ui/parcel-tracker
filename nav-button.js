@@ -27,5 +27,5 @@ function account() {
 
 // logout and return to login page
 function logout() {
-    window.location.href = "../USER/login.php";
+    window.location.href = "../USER/logout.php";
 }

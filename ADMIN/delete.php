@@ -36,7 +36,5 @@ if (mysqli_query($conn, $sql)) {
 }
 
 
-include ".//db.php";
-
 
 ?>

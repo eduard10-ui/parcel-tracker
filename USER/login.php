@@ -2,7 +2,9 @@
 // ==================== DATABASE CONNECTION ====================
 include "../db.php";
 // ==================== START SESSION ====================
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // ==================== LOGIN PROCESS ====================
 if (isset($_POST['register'])) {
     // ==================== CHECK USERNAME ====================

@@ -1,4 +1,12 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['is_rider']) && !isset($_SESSION['rider'])
+    && !isset($_SESSION['is_admin']) && !isset($_SESSION['admin'])) {
+    header("Location: ../USER/login.php");
+    exit();
+}
 
 // ==================== DATABASE CONNECTION ====================
 include '../db.php';

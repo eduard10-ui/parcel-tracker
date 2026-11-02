@@ -1,3 +1,13 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['is_rider']) && !isset($_SESSION['rider'])
+    && !isset($_SESSION['is_admin']) && !isset($_SESSION['admin'])) {
+    header("Location: ../USER/login.php");
+    exit();
+}
+?>
 <!-- ==================== PAGE TITLE ==================== -->
 <title>Rider Dashboard</title>
 
@@ -45,7 +55,9 @@
 // ==================== DATABASE CONNECTION ====================
 include '../db.php';
 // ==================== START SESSION ====================
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // ==================== SEARCH FUNCTION ====================
 if (isset($_POST['search_btn'])) {
     $search = mysqli_real_escape_string($conn, $_POST['search']);

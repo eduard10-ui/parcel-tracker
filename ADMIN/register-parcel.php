@@ -1,3 +1,12 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['is_admin']) && !isset($_SESSION['admin'])) {
+    header("Location: ../USER/login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -409,7 +418,6 @@ label {
 </html>
 
 <?php
-
 // ==================== DATABASE CONNECTION ====================
 include "../db.php";
 

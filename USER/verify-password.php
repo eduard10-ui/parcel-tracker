@@ -2,7 +2,9 @@
 // ==================== DATABASE CONNECTION ====================
 include '../db.php';
 // ==================== SESSION START ====================
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // ==================== LOGIN HANDLER ====================
 if (isset($_POST['login'])) {
     // ==================== INPUT SANITIZATION ====================

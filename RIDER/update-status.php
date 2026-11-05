@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 if (!isset($_SESSION['is_rider']) && !isset($_SESSION['rider'])
     && !isset($_SESSION['is_admin']) && !isset($_SESSION['admin'])) {
-    header("Location: ../USER/login.php");
+    header("Location: ../user/login.php");
     exit();
 }
 

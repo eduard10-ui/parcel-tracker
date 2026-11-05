@@ -2,7 +2,7 @@
 
 // go to user page
 function user() {
-    window.location.href = "../USER/user.php";
+    window.location.href = "../user/user.php";
 }
 
 // go to register parcel page
@@ -17,7 +17,7 @@ function parcel() {
 
 // go to rider page
 function rider() {
-    window.location.href = "../RIDER/rider.php";
+    window.location.href = "../rider/rider.php";
 }
 
 // go to account dashboard
@@ -27,5 +27,5 @@ function account() {
 
 // logout and return to login page
 function logout() {
-    window.location.href = "../USER/logout.php";
+    window.location.href = "../user/logout.php";
 }

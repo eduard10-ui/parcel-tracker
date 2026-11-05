@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (!isset($_SESSION['is_admin']) && !isset($_SESSION['admin'])) {
-    header("Location: ../USER/login.php");
+    header("Location: ../user/login.php");
     exit();
 }
 ?>
@@ -24,8 +24,8 @@ if (!isset($_SESSION['is_admin']) && !isset($_SESSION['admin'])) {
 <p id="logo_name">PARCEL TRACKER</p>
 <p id="logo_subname">PARCEL TRACKING SYSTEM</p>
 
-<img class="logo-style" src="../IMAGES/LOGO.PNG">
-<img class="dash-style" src="../IMAGES/TRACKER.PNG">
+<img class="logo-style" src="../images/LOGO.PNG">
+<img class="dash-style" src="../images/TRACKER.PNG">
 
 <!-- ==================== NAVIGATION MENU ==================== -->
 <div id="nav">

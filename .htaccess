@@ -15,5 +15,5 @@
 
 # ==================== REDIRECT OLD REGISTER URL (graceful 404) ====================
 RewriteEngine On
-RewriteRule ^USER/register\.php$ USER/login.php [L,R=301]
+RewriteRule ^user/register\.php$ user/login.php [L,R=301]
 

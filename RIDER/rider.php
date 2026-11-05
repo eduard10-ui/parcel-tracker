@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 if (!isset($_SESSION['is_rider']) && !isset($_SESSION['rider'])
     && !isset($_SESSION['is_admin']) && !isset($_SESSION['admin'])) {
-    header("Location: ../USER/login.php");
+    header("Location: ../user/login.php");
     exit();
 }
 ?>
@@ -185,8 +185,8 @@ window.onclick = function(event) {
 </script>
 
 <!-- ==================== HEADER IMAGES ==================== -->
-<img class="dash-style" src="../IMAGES/TRACKER.PNG">
-<img class="logo-style" src="../IMAGES/LOGO.PNG">
+<img class="dash-style" src="../images/TRACKER.PNG">
+<img class="logo-style" src="../images/LOGO.PNG">
 
 <style>
 

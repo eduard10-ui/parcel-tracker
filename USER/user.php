@@ -6,15 +6,14 @@
 
 <!-- ==================== EXTERNAL RESOURCES ==================== -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel='stylesheet' href='.CSS'>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <!-- ==================== VISUAL ELEMENTS ==================== -->
-<img class='logo-style' src="../IMAGES/LOGO.PNG">
-<img class="foreground-style" src="../IMAGES/USER.PNG">
-<img class="bg-img" src="../IMAGES/BG.PNG">
+<img class='logo-style' src="../images/LOGO.PNG">
+<img class="foreground-style" src="../images/USER.PNG">
+<img class="bg-img" src="../images/BG.PNG">
 
 <!-- ==================== HEADER ==================== -->
 <h1 class='logo_name'>PARCEL TRACKER</h1>
@@ -167,7 +166,7 @@ if (isset($_POST['track_code'])) {
 
 <!-- ==================== MAP ==================== -->
 <div id='map_box'>
-    <img id="map-style" src="../IMAGES/MAP.PNG" alt="Map preview">
+    <img id="map-style" src="../images/MAP.PNG" alt="Map preview">
     <div id='map' style='display: none'></div>
 </div>
 
@@ -226,7 +225,7 @@ body::before {
     pointer-events: none;
 }
 
-/* ==================== ANIMATIONS ==================== */
+/* ==================== DECORATIVE IMAGES ==================== */
 .bg-img {
     position: absolute;
     bottom: -120px;
@@ -261,10 +260,7 @@ body::before {
     pointer-events: none;
 }
 
-/* ===========================================================================================================
-    LOGO STYLES
-   =========================================================================================================== */
-
+/* ==================== LOGO STYLES ==================== */
 .logo_name {
     position: absolute;
     left: 120px;
@@ -292,10 +288,7 @@ body::before {
     letter-spacing: 2px;
 }
 
-/* ===========================================================================================================
-     TITLE
-   =========================================================================================================== */
-
+/* ==================== TITLE ==================== */
 #title {
     color: white;
     font-size: 20px;
@@ -304,10 +297,7 @@ body::before {
     margin-top: -100px;
 }
 
-/* ===========================================================================================================
-      SEARCH FORM
-   =========================================================================================================== */
-
+/* ==================== SEARCH FORM ==================== */
 #form_box {
     background: rgba(71, 168, 92, 0.1);
     padding: 7px;
@@ -360,10 +350,7 @@ body::before {
     font-weight: bold;
 }
 
-/* ===========================================================================================================
-   HISTORY BOX
-   =========================================================================================================== */
-
+/* ==================== HISTORY BOX ==================== */
 #history_box {
     background: rgba(1, 13, 0, 0.3);
     backdrop-filter: blur(15px);
@@ -388,10 +375,7 @@ body::before {
     margin: 0;
 }
 
-/* ===========================================================================================================
-        INFO BOX
-   =========================================================================================================== */
-
+/* ==================== INFO BOX ==================== */
 #info {
     text-align: center;
     background: linear-gradient(126deg, #53b853, #000a01);
@@ -418,10 +402,7 @@ body::before {
     border: 1px solid rgba(195, 248, 166, 0.2);
 }
 
-/* ===========================================================================================================
-        HISTORY ITEM
-   =========================================================================================================== */
-
+/* ==================== HISTORY ITEM ==================== */
 #history_item {
     text-align: center;
     background: linear-gradient(126deg, #58f863, #000a01);
@@ -457,18 +438,11 @@ body::before {
     width: 410px;
 }
 
-#status_icon {
-    margin-right: 7px;
-    color: #d0e03c;
-    text-shadow: 2px 2px 5px rgb(164, 190, 166);
-}
-
 #location {
     margin: -15px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bolder;
     color: #90f390;
-    font-size: 14;
     font-style: italic;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
     letter-spacing: 1px;
@@ -487,15 +461,11 @@ body::before {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
 }
 
-/* ===========================================================================================================
-    LOADING PLACEHOLDER ANIMATION (#inside, keyframes waveFade)
-   =========================================================================================================== */
-
+/* ==================== LOADING PLACEHOLDER ==================== */
 #inside {
     background: rgba(225, 225, 225, 0.1);
     border-radius: 10px;
     animation: waveFade 3s ease-in-out infinite;
-    height: 32px;
     z-index: 200;
     margin-bottom: 10px;
     font-weight: bolder;
@@ -519,7 +489,6 @@ body::before {
         opacity: 0.5;
         transform: translateY(0) scale(0.98);
     }
-
     50% {
         opacity: 0.7;
         transform: translateY(-3px) scale(1);
@@ -527,10 +496,7 @@ body::before {
     }
 }
 
-/* ===========================================================================================================
-    FOOTER
-   =========================================================================================================== */
-
+/* ==================== FOOTER ==================== */
 #develop {
     position: absolute;
     bottom: 0px;
@@ -541,7 +507,6 @@ body::before {
 }
 
 /* ==================== ABOUT MODAL ==================== */
-
 #about {
     position: absolute;
     top: 30px;
@@ -603,7 +568,6 @@ h2 {
 }
 
 /* ==================== ADMIN BUTTON ==================== */
-
 #admin_btn {
     position: absolute;
     right: 10px;
@@ -661,7 +625,6 @@ h2 {
 }
 
 /* ==================== MAP PLACEHOLDER ==================== */
-
 #map-style {
     position: absolute;
     inset: 10px;
@@ -676,7 +639,6 @@ h2 {
 }
 
 /* ==================== ACTUAL MAP ==================== */
-
 #map {
     position: absolute;
     inset: 10px;
@@ -688,7 +650,6 @@ h2 {
 }
 
 /* ==================== MAP CONTAINER ==================== */
-
 #map_box {
     height: 350px;
     width: 350px;
@@ -708,15 +669,12 @@ h2 {
                 inset -10px -10px 30px rgba(0, 15, 5, 0.8);
 }
 
-
-
 @keyframes fade {
     0%, 100% {
         opacity: 0.1;
         background: rgba(225,225,225, 0.1);
         transform: translateY(0) scale(0.98);
     }
-
     50% {
         opacity: 0.6;
         background: rgba(225,225,225, 0.3);
@@ -725,7 +683,6 @@ h2 {
 }
 
 /* ==================== HIDE MAP BUTTONS ==================== */
-
 #hide_box {
     position: absolute;
     right: 50px;
@@ -781,51 +738,9 @@ h2 {
 }
 
 /* ===========================================================================================================
-   MOBILE / PORTRAIT LAYOUT
-   Optimized for iPhone 12-sized portrait screens. Desktop/base CSS above is unchanged.
+    MOBILE RESPONSIVE — max-width: 600px
    =========================================================================================================== */
-
-/* ===========================================================================================================
-    MOBILE / PORTRAIT LAYOUT
-    Optimized for iPhone 12-sized portrait screens and small viewports (like 318px).
-   =========================================================================================================== */
-
 @media screen and (max-width: 600px) {
-
-    /* ... Keep your general mobile settings unchanged ... */
-
-    /* Focus strictly on correcting, centering, and sizing the foreground-style */
-    .foreground-style {
-        position: absolute !important;
-        left: 50% !important;                 /* Force center alignment */
-        transform: translateX(-50%) !important; /* Adjust horizontally centered */
-        top: 172px !important;                /* Fine-tune vertical height position below the search bar */
-        width: 155px !important;              /* Keep the width snug so it doesn't spill over margins */
-        height: 185px !important;             /* Increased to desired test taller height */
-        max-height: 185px !important;
-        object-fit: contain !important;       /* Avoid stretching of the courier graphic */
-        pointer-events: none;
-        z-index: 10 !important;
-    }
-
-    /* Pull the tracking panel down sufficiently to clear the new extra-tall illustration */
-    #history_box {
-        position: relative;
-        z-index: 5;
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 520px;
-        height: 230px;
-        min-height: 215px;
-        /* Increased the margin-top to gracefully shift the tracker below the newly elongated image */
-        margin: 170px 0 0 !important; 
-        padding: 12px 13px 14px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        border-radius: 18px;
-    }
-
-    /* ... Keep other styling unchanged ... */
 
     *,
     *::before,
@@ -913,7 +828,20 @@ h2 {
         z-index: 25;
     }
 
-    /* Low-opacity skyline along the bottom edge */
+    /* Courier illustration — centered between search and history */
+    .foreground-style {
+        position: absolute;
+        left: 50%;
+        top: 172px;
+        transform: translateX(-50%);
+        width: 155px;
+        height: 185px;
+        max-height: 185px;
+        object-fit: contain;
+        pointer-events: none;
+        z-index: 10;
+    }
+
     .bg-img {
         position: fixed;
         left: 50%;
@@ -926,47 +854,6 @@ h2 {
         z-index: -1;
         pointer-events: none;
     }
-
-    /*
-       The image occurs before the form in the supplied HTML, so it is positioned
-       visually between the search bar and history panel without moving the markup.
-    */
-/* ===========================================================================================================
-    SMALLER MOBILE SCREENS / OVERLAP & SIZE ADJUSTMENTS FOR SPECIFIC DEVICE WIDTHS
-   =========================================================================================================== */
-
-@media screen and (max-width: 380px) {
-    /* ... (keep other styling unchanged as is) ... */
-
-.foreground-style {
-        /* Centering Anchor */
-        position: absolute !important;
-        left: 50% !important;
-        /* Make sure you combine translateX and scale in one transform statement to keep centering! */
-        transform: translateX(-50%) scale(1.15) !important; 
-        
-        /* Positioning & Large Size For Lower Overlap */
-        top: 138px !important;              /* High position, but tall enough to drop down below */
-        width: min(82vw, 250px) !important;
-        height: 200px !important;           /* Increased past 185px to provide that heavy overlap you want! */
-        max-height: 200px !important; 
-        
-        /* Ensure it fits cleanly inside the tall space without weird stretching */
-        object-fit: contain !important;     
-        
-        /* The Secret for Layering: make absolutely sure z-index is higher than your #history_box index */
-        z-index: 19 !important;             
-        
-        /* Push margins if needed, though with absolute position, top/height are the heavy hitters! */
-        margin-bottom: 200px !important;      
-        pointer-events: none;
-    }
-
-    #history_box {
-        /* Pulls panel slightly or keep margin gap based on courier overlap */
-        margin-top: 142px !important;     /* Ensure overlap alignment looks intentional */
-    }
-}
 
     /* Empty title should not create a blank flex row */
     #title {
@@ -1033,7 +920,6 @@ h2 {
         white-space: nowrap;
     }
 
-    /* The PHP error paragraph has no ID in the provided HTML */
     #form_box + p {
         position: relative;
         z-index: 10;
@@ -1048,7 +934,7 @@ h2 {
         overflow-wrap: anywhere;
     }
 
-    /* Tracking panel. The top margin reserves the courier image area above it. */
+    /* Tracking panel — pushed below the courier illustration */
     #history_box {
         position: relative;
         z-index: 5;
@@ -1151,7 +1037,7 @@ h2 {
         text-align: center;
     }
 
-    /* Map preview / actual Leaflet map */
+    /* Map */
     #map_box {
         position: relative;
         top: auto;
@@ -1197,7 +1083,6 @@ h2 {
         overflow: hidden;
     }
 
-    /* Map control directly below the map */
     #hide_box {
         position: relative;
         top: auto;
@@ -1229,7 +1114,7 @@ h2 {
         font-size: 13px;
     }
 
-    /* Fixed footer controls, kept clear of the iPhone home indicator */
+    /* Fixed footer controls */
     #develop {
         position: fixed;
         left: 12px;
@@ -1380,7 +1265,9 @@ h2 {
     }
 }
 
-/* Smaller portrait phones */
+/* ===========================================================================================================
+    SMALLER PORTRAIT PHONES — max-width: 380px
+   =========================================================================================================== */
 @media screen and (max-width: 380px) {
     body {
         padding-right: 12px;
@@ -1418,9 +1305,9 @@ h2 {
 
     .foreground-style {
         top: 155px;
-        width: min(88vw, 320px);
-        height: 135px;
-        max-height: 135px;
+        width: 155px;
+        height: 185px;
+        max-height: 185px;
     }
 
     #form_box {
@@ -1483,14 +1370,15 @@ h2 {
     }
 }
 
-/* Short screens: keep the page scrollable and modals within the viewport */
+/* ===========================================================================================================
+    SHORT SCREENS — max-width: 600px AND max-height: 700px
+   =========================================================================================================== */
 @media screen and (max-width: 600px) and (max-height: 700px) {
     body {
         padding-top: 112px;
         padding-bottom: 76px;
         gap: 10px;
     }
-
 
     #history_box {
         height: 210px;
@@ -1513,6 +1401,5 @@ h2 {
         line-height: 1.4;
     }
 }
-
 </style>
 </html>

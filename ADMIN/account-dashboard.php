@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (!isset($_SESSION['is_admin']) && !isset($_SESSION['admin'])) {
-    header("Location: ../USER/login.php");
+    header("Location: ../user/login.php");
     exit();
 }
 ?>
@@ -112,8 +112,8 @@ echo "</table>";
 ?>
 
 <!-- ==================== ANIMATION ASSETS ==================== -->
-<img class='dash-style' src="../IMAGES/TRACKER.PNG">
-<img class='logo-style' src="../IMAGES/LOGO.PNG">
+<img class='dash-style' src="../images/TRACKER.PNG">
+<img class='logo-style' src="../images/LOGO.PNG">
 
 </body>
 

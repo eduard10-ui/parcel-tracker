@@ -1,32 +1,46 @@
 <?php
 // ==================== DATABASE CONNECTION ====================
 include '../db.php';
+
 // ==================== SESSION START ====================
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// ==================== POST-ONLY GUARD ====================
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['login'])) {
+    header("Location: user.php");
+    exit();
+}
+
 // ==================== LOGIN HANDLER ====================
 if (isset($_POST['login'])) {
+
     // ==================== INPUT SANITIZATION ====================
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+
     // ==================== CHECK ADMIN ACCOUNT (id = 0) ====================
     $admin_result = mysqli_query($conn, "SELECT password FROM admin WHERE id=0");
     $admin_row = mysqli_fetch_assoc($admin_result);
+
     // ==================== CHECK RIDER ACCOUNT (id = 1) ====================
-    $rider_result = mysqli_query($conn,"SELECT password FROM admin WHERE id=1");
+    $rider_result = mysqli_query($conn, "SELECT password FROM admin WHERE id=1");
     $rider_row = mysqli_fetch_assoc($rider_result);
+
     // ==================== ADMIN LOGIN VALIDATION ====================
     if ($password == $admin_row['password']) {
         $_SESSION['admin'] = true;
         header("Location: ../ADMIN/dashboard.php");
         exit();
     }
+
     // ==================== RIDER LOGIN VALIDATION ====================
     elseif ($password == $rider_row['password']) {
         $_SESSION['rider'] = true;
         header("Location: ../RIDER/rider.php");
         exit();
     }
+
     // ==================== INVALID LOGIN ====================
     else {
         echo "<script>alert('wrong password');window.location.href='user.php';</script>";

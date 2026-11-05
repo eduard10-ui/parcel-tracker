@@ -781,13 +781,51 @@ h2 {
 }
 
 /* ===========================================================================================================
-    MOBILE RESPONSIVE LAYOUT
-    Optimized for iPhone 12 (390px × 844px CSS viewport)
+   MOBILE / PORTRAIT LAYOUT
+   Optimized for iPhone 12-sized portrait screens. Desktop/base CSS above is unchanged.
+   =========================================================================================================== */
+
+/* ===========================================================================================================
+    MOBILE / PORTRAIT LAYOUT
+    Optimized for iPhone 12-sized portrait screens and small viewports (like 318px).
    =========================================================================================================== */
 
 @media screen and (max-width: 600px) {
 
-    /* ===== GENERAL MOBILE SETTINGS ===== */
+    /* ... Keep your general mobile settings unchanged ... */
+
+    /* Focus strictly on correcting, centering, and sizing the foreground-style */
+    .foreground-style {
+        position: absolute !important;
+        left: 50% !important;                 /* Force center alignment */
+        transform: translateX(-50%) !important; /* Adjust horizontally centered */
+        top: 172px !important;                /* Fine-tune vertical height position below the search bar */
+        width: 155px !important;              /* Keep the width snug so it doesn't spill over margins */
+        height: 185px !important;             /* Increased to desired test taller height */
+        max-height: 185px !important;
+        object-fit: contain !important;       /* Avoid stretching of the courier graphic */
+        pointer-events: none;
+        z-index: 10 !important;
+    }
+
+    /* Pull the tracking panel down sufficiently to clear the new extra-tall illustration */
+    #history_box {
+        position: relative;
+        z-index: 5;
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 520px;
+        height: 230px;
+        min-height: 215px;
+        /* Increased the margin-top to gracefully shift the tracker below the newly elongated image */
+        margin: 170px 0 0 !important; 
+        padding: 12px 13px 14px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border-radius: 18px;
+    }
+
+    /* ... Keep other styling unchanged ... */
 
     *,
     *::before,
@@ -799,59 +837,66 @@ h2 {
         width: 100%;
         min-height: 100%;
         overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
     }
 
     body {
         position: relative;
         width: 100%;
+        min-width: 0;
         min-height: 100vh;
         min-height: 100svh;
         margin: 0;
-        padding: 112px 16px 90px;
+        padding: 142px 16px 82px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        gap: 13px;
+        gap: 12px;
         overflow-x: hidden;
         overflow-y: auto;
+        isolation: isolate;
     }
 
-    /* ===== HEADER AND LOGO ===== */
-
+    /* Compact header */
     .logo-style {
         position: absolute;
+        top: 13px;
+        left: 13px;
         width: 55px;
         height: 55px;
-        left: 13px;
-        top: 13px;
         object-fit: contain;
+        z-index: 20;
     }
 
     .logo_name {
         position: absolute;
+        top: 19px;
         left: 76px;
-        top: 20px;
-        right: 65px;
+        right: 62px;
         width: auto;
+        margin: 0;
+        padding: 0;
         font-size: 18px;
         line-height: 1.2;
-        margin: 0;
+        white-space: nowrap;
+        z-index: 20;
     }
 
     #logo_subname {
         position: absolute;
+        top: 44px;
         left: 77px;
-        top: 45px;
-        right: 65px;
+        right: 58px;
         width: auto;
         height: auto;
+        margin: 0;
         font-size: 9px;
-        line-height: 1.4;
+        line-height: 1.3;
         letter-spacing: 1px;
+        white-space: nowrap;
+        z-index: 20;
     }
-
-    /* ===== ABOUT BUTTON ===== */
 
     #about {
         position: absolute;
@@ -860,60 +905,86 @@ h2 {
         width: 38px;
         height: 38px;
         padding: 0;
-        font-size: 18px;
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 50%;
+        font-size: 18px;
+        z-index: 25;
     }
 
-    /* ===== DECORATIVE IMAGES ===== */
-
+    /* Low-opacity skyline along the bottom edge */
     .bg-img {
-        position: absolute;
-        width: 150vw;
+        position: fixed;
+        left: 50%;
+        bottom: -2px;
+        width: 145vw;
         max-width: none;
         height: auto;
-        left: 50%;
-        bottom: -40px;
         transform: translateX(-50%);
+        opacity: 0.15;
+        z-index: -1;
+        pointer-events: none;
     }
 
-    .foreground-style {
-        position: absolute;
-        width: min(60vw, 230px);
-        max-width: 230px;
-        height: auto;
-        left: -45px;
-        top: auto;
-        bottom: 95px;
-        transform: none;
-        z-index: 0;
+    /*
+       The image occurs before the form in the supplied HTML, so it is positioned
+       visually between the search bar and history panel without moving the markup.
+    */
+/* ===========================================================================================================
+    SMALLER MOBILE SCREENS / OVERLAP & SIZE ADJUSTMENTS FOR SPECIFIC DEVICE WIDTHS
+   =========================================================================================================== */
+
+@media screen and (max-width: 380px) {
+    /* ... (keep other styling unchanged as is) ... */
+
+.foreground-style {
+        /* Centering Anchor */
+        position: absolute !important;
+        left: 50% !important;
+        /* Make sure you combine translateX and scale in one transform statement to keep centering! */
+        transform: translateX(-50%) scale(1.15) !important; 
+        
+        /* Positioning & Large Size For Lower Overlap */
+        top: 138px !important;              /* High position, but tall enough to drop down below */
+        width: min(82vw, 250px) !important;
+        height: 200px !important;           /* Increased past 185px to provide that heavy overlap you want! */
+        max-height: 200px !important; 
+        
+        /* Ensure it fits cleanly inside the tall space without weird stretching */
+        object-fit: contain !important;     
+        
+        /* The Secret for Layering: make absolutely sure z-index is higher than your #history_box index */
+        z-index: 19 !important;             
+        
+        /* Push margins if needed, though with absolute position, top/height are the heavy hitters! */
+        margin-bottom: 200px !important;      
+        pointer-events: none;
     }
 
-    /* ===== MAIN TITLE ===== */
+    #history_box {
+        /* Pulls panel slightly or keep margin gap based on courier overlap */
+        margin-top: 142px !important;     /* Ensure overlap alignment looks intentional */
+    }
+}
 
+    /* Empty title should not create a blank flex row */
     #title {
-        position: relative;
-        z-index: 5;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        font-size: 18px;
-        line-height: 1.3;
-        text-align: center;
+        display: none;
     }
 
-    /* ===== SEARCH FORM ===== */
-
+    /* Search bar */
     #form_box {
         position: relative;
-        z-index: 5;
+        z-index: 10;
+        flex: 0 0 auto;
         width: 100%;
         max-width: 520px;
-        min-height: 52px;
+        min-height: 48px;
         margin: 0;
-        padding: 6px 7px;
+        padding: 5px 7px;
         display: flex;
+        flex-direction: row;
         align-items: center;
         gap: 7px;
         border-radius: 13px;
@@ -924,79 +995,92 @@ h2 {
         width: 27px;
         margin: 0;
         padding: 0;
-        font-size: 23px;
+        font-size: 24px;
+        line-height: 1;
         text-align: center;
     }
 
     #form_box input {
-        flex: 1 1 auto;
+        flex: 1 1 0;
         width: 0;
         min-width: 0;
-        height: 40px;
+        height: 38px;
         margin: 0;
         padding: 0 5px;
         font-size: 14px;
-        letter-spacing: 0.7px;
-        text-align: left;
+        letter-spacing: 0.4px;
+        text-align: center;
     }
 
     #form_box input::placeholder {
         font-size: 13px;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
+        opacity: 0.8;
     }
 
     #search_btn {
-        flex: 0 0 auto;
-        width: auto;
+        flex: 0 0 82px;
+        width: 82px;
         min-width: 82px;
-        height: 40px;
+        height: 38px;
         margin: 0;
-        padding: 8px 12px;
+        padding: 7px 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 10px;
         font-size: 14px;
         white-space: nowrap;
     }
 
-    /* ===== ERROR MESSAGE ===== */
-
-    #error {
+    /* The PHP error paragraph has no ID in the provided HTML */
+    #form_box + p {
+        position: relative;
+        z-index: 10;
         width: 100%;
         max-width: 520px;
         margin: 0;
-        padding: 5px;
-        font-size: 12px;
+        padding: 5px 8px;
+        color: #ff8c8c;
+        font-size: 11px;
+        font-weight: bold;
         text-align: center;
         overflow-wrap: anywhere;
     }
 
-    /* ===== HISTORY CONTAINER ===== */
-
+    /* Tracking panel. The top margin reserves the courier image area above it. */
     #history_box {
         position: relative;
         z-index: 5;
+        flex: 0 0 auto;
         width: 100%;
         max-width: 520px;
-        height: 290px;
-        min-height: 220px;
-        margin: 0;
-        padding: 12px 13px 18px;
+        height: 230px;
+        min-height: 215px;
+        margin: 140px 0 0;
+        padding: 12px 13px 14px;
         overflow-x: hidden;
         overflow-y: auto;
-        border-radius: 17px;
+        border-radius: 18px;
+        scroll-behavior: smooth;
+        overscroll-behavior: contain;
     }
 
     #history_box::-webkit-scrollbar {
         width: 4px;
     }
 
-    /* ===== PARCEL INFORMATION ===== */
+    #history_box::-webkit-scrollbar-thumb {
+        background: rgba(250, 255, 251, 0.35);
+        border-radius: 10px;
+    }
 
     #info {
         width: 100%;
-        margin-bottom: 10px;
-        padding: 7px;
-        border-radius: 15px;
-        font-size: 13px;
+        margin: 0 0 9px;
+        padding: 6px;
+        border-radius: 14px;
+        font-size: 12px;
         line-height: 1.4;
     }
 
@@ -1004,32 +1088,29 @@ h2 {
         width: 100%;
         min-width: 0;
         padding: 8px;
-        border-radius: 12px;
-        font-size: 12px;
-        line-height: 1.5;
+        border-radius: 11px;
+        font-size: 11px;
+        line-height: 1.4;
         overflow-wrap: anywhere;
     }
-
-    /* ===== INDIVIDUAL HISTORY CARDS ===== */
 
     #history_item {
         width: 100%;
         min-width: 0;
-        margin-bottom: 10px;
-        padding: 10px 9px;
-        border-radius: 14px;
+        margin: 0 0 9px;
+        padding: 8px;
+        border-radius: 13px;
     }
 
     #status {
         width: 100%;
         max-width: 100%;
-        margin: 0 0 7px;
-        padding: 7px 5px;
-        font-size: 12px;
-        line-height: 1.4;
-        border-radius: 10px;
+        margin: 0 0 6px;
+        padding: 6px 5px;
+        border-radius: 9px;
+        font-size: 11px;
+        line-height: 1.35;
         overflow-wrap: anywhere;
-        text-align: center;
     }
 
     #location {
@@ -1037,192 +1118,217 @@ h2 {
         max-width: 100%;
         margin: 0;
         padding: 0 3px;
-        font-size: 12px;
-        line-height: 1.5;
-        letter-spacing: 0.3px;
+        font-size: 11px;
+        line-height: 1.4;
+        letter-spacing: 0.2px;
         overflow-wrap: anywhere;
         text-align: center;
     }
 
     #time {
         width: 100%;
-        margin: 8px 0 0;
-        font-size: 10px;
-        line-height: 1.4;
+        margin: 7px 0 0;
+        font-size: 9px;
+        line-height: 1.35;
         text-align: center;
     }
 
-    /* ===== WAITING PLACEHOLDERS ===== */
-
+    /* Four animated empty-state cards */
     #inside {
         width: 100%;
-        min-height: 55px;
-        height: auto;
-        margin-bottom: 8px;
-        padding: 10px;
+        min-height: 43px;
+        height: 43px;
+        margin: 0 0 8px;
+        padding: 7px 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(195, 248, 166, 0.08);
         border-radius: 10px;
+        color: rgba(4, 35, 9, 0.68);
         font-size: 11px;
-        line-height: 1.4;
+        line-height: 1.35;
         text-align: center;
     }
 
-    /* ===== MAP CONTAINER ===== */
-
+    /* Map preview / actual Leaflet map */
     #map_box {
         position: relative;
-        z-index: 5;
         top: auto;
         right: auto;
+        z-index: 5;
+        flex: 0 0 auto;
         width: 100%;
         max-width: 520px;
-        height: 280px;
-        min-height: 240px;
+        height: 145px;
+        min-height: 130px;
         margin: 0;
         padding: 8px;
-        border-radius: 17px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        overflow: hidden;
     }
 
+    #map-style,
     #map {
         position: absolute;
         top: 8px;
+        right: 8px;
+        bottom: 8px;
         left: 8px;
         width: calc(100% - 16px);
         height: calc(100% - 16px);
+        max-width: none;
+        max-height: none;
         border-radius: 13px;
     }
 
     #map-style {
-        width: min(65vw, 240px);
-        height: auto;
-        max-height: 240px;
-        top: auto;
-        right: 50%;
-        bottom: 330px;
-        transform: translateX(50%);
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center;
+        opacity: 0.7;
         z-index: 1;
     }
 
-    /* ===== HIDE MAP CONTROLS ===== */
+    #map {
+        z-index: 2;
+        overflow: hidden;
+    }
 
+    /* Map control directly below the map */
     #hide_box {
         position: relative;
-        z-index: 5;
         top: auto;
         right: auto;
+        z-index: 6;
+        flex: 0 0 auto;
         width: 100%;
         max-width: 520px;
-        height: 48px;
-        min-height: 48px;
+        height: 44px;
+        min-height: 44px;
         margin: 0 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 13px;
     }
 
     #hide-holder,
     #hide {
+        position: absolute;
+        left: 10px;
         width: calc(100% - 20px);
         max-width: none;
-        height: 36px;
-        padding: 7px 12px;
-        border-radius: 10px;
-        font-size: 14px;
+        height: 32px;
+        min-height: 32px;
+        margin: 0;
+        padding: 6px 10px;
+        border-radius: 9px;
+        font-size: 13px;
     }
 
-    /* ===== ADMIN BUTTON ===== */
+    /* Fixed footer controls, kept clear of the iPhone home indicator */
+    #develop {
+        position: fixed;
+        left: 12px;
+        right: 64px;
+        bottom: max(15px, env(safe-area-inset-bottom));
+        z-index: 30;
+        width: auto;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 8px;
+        line-height: 1.35;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
 
     #admin_btn {
         position: fixed;
-        z-index: 250;
         right: 13px;
-        bottom: 13px;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        z-index: 35;
         width: 43px;
-        height: 43px;
+        height: 40px;
+        margin: 0;
         padding: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 12px;
-        font-size: 16px;
+        border-radius: 11px;
+        font-size: 15px;
     }
 
-    /* ===== FOOTER ===== */
-
-    #develop {
-        position: fixed;
-        z-index: 200;
-        left: 12px;
-        right: 68px;
-        bottom: 17px;
-        width: auto;
-        margin: 0;
-        font-size: 8px;
-        line-height: 1.4;
-        letter-spacing: 0.1px;
-    }
-
-    /* ===== ABOUT MODAL ===== */
-
+    /* About modal */
     #about_box {
         position: fixed;
-        z-index: 300;
         inset: 0;
+        z-index: 300;
         width: 100%;
         height: 100%;
+        height: 100dvh;
         min-height: 100svh;
         margin: 0;
-        padding: 16px;
-        border-radius: 0;
+        padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 0;
+        overflow-y: auto;
+        box-sizing: border-box;
     }
 
     #about_box_inside {
         position: relative;
         width: 100%;
-        max-width: 450px;
+        max-width: 430px;
         height: auto;
-        max-height: calc(100svh - 32px);
-        padding: 22px 19px;
+        max-height: calc(100dvh - 32px);
+        margin: auto;
+        padding: 21px 18px;
         overflow-x: hidden;
         overflow-y: auto;
         border-radius: 17px;
+        box-sizing: border-box;
     }
 
     #about_box_inside h2 {
-        margin: 0 0 12px;
+        margin: 0 0 11px;
         font-size: 19px;
         line-height: 1.3;
     }
 
     #about_box_inside p {
-        margin: 12px 0;
+        margin: 10px 0;
         font-size: 13px;
-        line-height: 1.6;
+        line-height: 1.55;
     }
 
     #about_box_inside hr {
-        margin: 12px 0;
+        margin: 11px 0;
     }
 
     #exit {
-        width: 80px;
+        width: 82px;
         min-height: 40px;
-        margin-top: 8px;
+        margin-top: 7px;
         padding: 7px;
         font-size: 16px !important;
     }
 
-    /* ===== ADMIN / RIDER LOGIN MODAL ===== */
-
+    /* Admin / rider login modal */
     #log_box {
         position: fixed;
-        z-index: 300;
         inset: 0;
+        z-index: 300;
         width: 100%;
         height: 100%;
+        height: 100dvh;
         min-height: 100svh;
-        padding: 16px;
+        margin: 0;
+        padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1233,16 +1339,22 @@ h2 {
         width: 100%;
         max-width: 330px;
         height: auto;
-        min-height: 230px;
-        padding: 22px 18px;
+        min-height: 225px;
+        margin: auto;
+        padding: 21px 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         border-radius: 17px;
         box-sizing: border-box;
     }
 
     #log_box_inside p {
         width: 100%;
-        margin: 0 0 15px;
+        margin: 0 0 13px;
         font-size: 14px;
+        line-height: 1.4;
         text-align: center;
     }
 
@@ -1250,7 +1362,7 @@ h2 {
         width: 100%;
         max-width: 260px;
         min-height: 42px;
-        margin: 5px 0 10px;
+        margin: 5px 0 9px;
         padding: 10px;
         font-size: 14px;
         box-sizing: border-box;
@@ -1268,38 +1380,47 @@ h2 {
     }
 }
 
-/* ===========================================================================================================
-    SMALLER MOBILE SCREENS
-   =========================================================================================================== */
-
+/* Smaller portrait phones */
 @media screen and (max-width: 380px) {
-
     body {
-        padding-left: 12px;
         padding-right: 12px;
+        padding-left: 12px;
     }
 
     .logo-style {
+        top: 14px;
+        left: 11px;
         width: 49px;
         height: 49px;
     }
 
     .logo_name {
-        left: 68px;
         top: 18px;
+        left: 67px;
+        right: 55px;
         font-size: 16px;
     }
 
     #logo_subname {
-        left: 69px;
-        top: 41px;
+        top: 40px;
+        left: 68px;
+        right: 52px;
         font-size: 8px;
+        letter-spacing: 0.7px;
     }
 
     #about {
-        right: 12px;
+        top: 15px;
+        right: 11px;
         width: 35px;
         height: 35px;
+    }
+
+    .foreground-style {
+        top: 155px;
+        width: min(88vw, 320px);
+        height: 135px;
+        max-height: 135px;
     }
 
     #form_box {
@@ -1323,49 +1444,67 @@ h2 {
     }
 
     #search_btn {
-        min-width: 72px;
-        padding: 8px;
-        font-size: 13px;
+        flex-basis: 73px;
+        width: 73px;
+        min-width: 73px;
+        padding: 7px 6px;
+        font-size: 12px;
     }
 
     #history_box {
-        padding-left: 10px;
+        height: 220px;
+        min-height: 205px;
+        margin-top: 132px;
         padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    #inside {
+        min-height: 41px;
+        height: 41px;
+        font-size: 10px;
     }
 
     #map_box {
-        height: 250px;
+        height: 138px;
+        min-height: 125px;
     }
 
     #develop {
+        left: 10px;
+        right: 59px;
         font-size: 7px;
+    }
+
+    #admin_btn {
+        right: 10px;
+        width: 40px;
+        height: 38px;
     }
 }
 
-/* ===========================================================================================================
-    MOBILE LANDSCAPE / SHORT SCREEN ADJUSTMENTS
-   =========================================================================================================== */
-
+/* Short screens: keep the page scrollable and modals within the viewport */
 @media screen and (max-width: 600px) and (max-height: 700px) {
-
     body {
-        padding-top: 100px;
-        padding-bottom: 85px;
+        padding-top: 112px;
+        padding-bottom: 76px;
         gap: 10px;
     }
 
+
     #history_box {
-        height: 230px;
-        min-height: 200px;
+        height: 210px;
+        min-height: 195px;
+        margin-top: 120px;
     }
 
     #map_box {
-        height: 230px;
-        min-height: 210px;
+        height: 125px;
+        min-height: 115px;
     }
 
     #about_box_inside {
-        max-height: calc(100svh - 24px);
+        max-height: calc(100dvh - 24px);
         padding: 15px;
     }
 
@@ -1374,5 +1513,6 @@ h2 {
         line-height: 1.4;
     }
 }
+
 </style>
 </html>

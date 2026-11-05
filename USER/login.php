@@ -46,60 +46,9 @@ if (isset($_POST['register'])) {
         header("Location: ../RIDER/rider.php");
         exit();
     }
-    // ==================== USER ACCOUNT CHECK ====================
-    $sql = "SELECT * FROM accounts WHERE username = '$username'";
-    $result = mysqli_query($conn, $sql);
-    if (!$result) {
-        echo "<script>alert('Database error! Please try again.'); window.location.href='login.php';</script>";
-        exit();
-    }
-    $row = mysqli_fetch_assoc($result);
-    if ($row) {
-        // ==================== ACCOUNT DISABLED CHECK ====================
-        if ($row['status'] == 'disabled') {
-            echo "<script>alert('Account locked! Contact Admin.'); window.location.href='login.php';</script>";
-            exit();
-        }
-        // ==================== PASSWORD VERIFY ====================
-        if (password_verify($password, $row['password'])) {
-            mysqli_query($conn, "UPDATE accounts SET failed_attempts = 0 WHERE username = '$username'");
-            $_SESSION['user'] = $username;
-            $_SESSION['is_user'] = true;
-            header("Location: user.php");
-            exit();
-        } else {
-            // ==================== FAILED ATTEMPTS ====================
-            $attempts = $row['failed_attempts'] + 1;
-            if ($attempts >= 3) {
-                $update = mysqli_query( $conn,
-                "UPDATE accounts 
-                     SET failed_attempts = $attempts, status = 'disabled'
-                     WHERE username = '$username'"
-                );
-                if (!$update) {
-                    echo "<script>alert('Database error!'); window.location.href='login.php';</script>";
-                    exit();
-                }
-                echo "<script>alert('3 fails! Account Disabled.'); window.location.href='login.php';</script>";
-            } else {
-                $update = mysqli_query(
-                    $conn,
-                    "UPDATE accounts 
-                     SET failed_attempts = $attempts
-                     WHERE username = '$username'"
-                );
-                if (!$update) {
-                    echo "<script>alert('Database error!'); window.location.href='login.php';</script>";
-                    exit();
-                }
-                $left = 3 - $attempts;
-                echo "<script>alert('Wrong password! $left attempts left.'); window.location.href='login.php';</script>";
-            }
-        }
-    } else {
-        // ==================== USER NOT FOUND ====================
-        echo "<script>alert('User does not exist.'); window.location.href='login.php';</script>";
-    }
+    // ==================== INVALID LOGIN ====================
+    echo "<script>alert('Invalid username or password.'); window.location.href='login.php';</script>";
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -145,10 +94,6 @@ if (isset($_POST['register'])) {
         <input type="hidden" name="status">
         <button name="register">LOGIN</button>
     </form>
-    <div id="login">
-        <p>Do not have an account yet?</p>
-        <a href="register.php">Register here...</a>
-    </div>
 </div>
 <!-- ==================== ABOUT BUTTON ==================== -->
 <button id="about" onclick="about()">?</button>
@@ -204,7 +149,6 @@ body {
     z-index: 10;
     pointer-events: none;
 }
-
 
 #logo_name {
     position: absolute;
@@ -328,12 +272,6 @@ a {
     color: yellow;
 }
 
-#login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
 /* ==================== EXTRA IMAGES ==================== */
 .registry-style {
     position: absolute;
@@ -341,7 +279,6 @@ a {
     left: -20px;
     bottom: 0px;
 }
-
 
 #developer {
     position: absolute;

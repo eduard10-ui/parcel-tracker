@@ -1,0 +1,19 @@
+# ==================== BLOCK SENSITIVE FILES ====================
+<FilesMatch "\.(sql|md|txt|log|bak|old|env|ini|yml|yaml)$">
+    Require all denied
+</FilesMatch>
+
+# ==================== BLOCK HIDDEN FILES ====================
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ==================== BLOCK DIRECT ACCESS TO db.php ====================
+<Files "db.php">
+    Require all denied
+</Files>
+
+# ==================== REDIRECT OLD REGISTER URL (graceful 404) ====================
+RewriteEngine On
+RewriteRule ^USER/register\.php$ USER/login.php [L,R=301]
+
